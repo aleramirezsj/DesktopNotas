@@ -110,11 +110,38 @@ namespace DesktopNotas
         private void btnIniciarCámara_Click(object sender, EventArgs e)
         {
             webcam.Initalize();
+            btnIniciarCámara.Enabled = false;
+            btnDetenerCámara.Enabled = true;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             webcam.Deinitalize();
+            btnIniciarCámara.Enabled = true;
+            btnDetenerCámara.Enabled = false;
+        }
+
+        private void btnExaminar_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog archivoImagen = new OpenFileDialog();
+            string filtro = "Todas las imágenes|*.jpg;*.gif;*.png;*.bmp";
+            filtro += "|JPG (*.jpg)|*.jpg";
+            filtro += "|GIF* (*.gif)|*.gif";
+            filtro += "|PNG* (*.png)|*.png";
+            filtro += "|BMP (*.bmp)|*.bmp";
+            archivoImagen.Filter = filtro;
+            archivoImagen.ShowDialog();
+            if (archivoImagen.FileName != "")
+            {
+                pictureBoxFoto.Image = new Bitmap(archivoImagen.FileName);
+                //TxtImagen.Text = ofdAbrirArchivo.FileName;
+            }
+        }
+
+        private void btnBorrarImagen_Click(object sender, EventArgs e)
+        {
+            pictureBoxFoto.Image = null;
         }
     }
 }

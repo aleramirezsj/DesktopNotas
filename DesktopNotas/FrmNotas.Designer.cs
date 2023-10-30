@@ -38,6 +38,7 @@
             btnNuevo = new Button();
             dataGridNotas = new DataGridView();
             tabPageDetalle = new TabPage();
+            btnExaminar = new Button();
             btnDetenerCámara = new Button();
             btnIniciarCámara = new Button();
             pictureBoxFoto = new PictureBox();
@@ -48,6 +49,7 @@
             txtTitulo = new TextBox();
             label2 = new Label();
             label1 = new Label();
+            btnBorrarImagen = new Button();
             tabControlNotas.SuspendLayout();
             tabPageLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridNotas).BeginInit();
@@ -152,6 +154,8 @@
             // 
             // tabPageDetalle
             // 
+            tabPageDetalle.Controls.Add(btnBorrarImagen);
+            tabPageDetalle.Controls.Add(btnExaminar);
             tabPageDetalle.Controls.Add(btnDetenerCámara);
             tabPageDetalle.Controls.Add(btnIniciarCámara);
             tabPageDetalle.Controls.Add(pictureBoxFoto);
@@ -170,8 +174,19 @@
             tabPageDetalle.Text = "Detalle";
             tabPageDetalle.UseVisualStyleBackColor = true;
             // 
+            // btnExaminar
+            // 
+            btnExaminar.Location = new Point(379, 336);
+            btnExaminar.Name = "btnExaminar";
+            btnExaminar.Size = new Size(156, 29);
+            btnExaminar.TabIndex = 10;
+            btnExaminar.Text = "Examinar";
+            btnExaminar.UseVisualStyleBackColor = true;
+            btnExaminar.Click += btnExaminar_Click;
+            // 
             // btnDetenerCámara
             // 
+            btnDetenerCámara.Enabled = false;
             btnDetenerCámara.Location = new Point(379, 283);
             btnDetenerCámara.Name = "btnDetenerCámara";
             btnDetenerCámara.Size = new Size(156, 29);
@@ -260,6 +275,16 @@
             label1.TabIndex = 0;
             label1.Text = "Titulo:";
             // 
+            // btnBorrarImagen
+            // 
+            btnBorrarImagen.Location = new Point(379, 392);
+            btnBorrarImagen.Name = "btnBorrarImagen";
+            btnBorrarImagen.Size = new Size(156, 29);
+            btnBorrarImagen.TabIndex = 11;
+            btnBorrarImagen.Text = "Borrar imagen";
+            btnBorrarImagen.UseVisualStyleBackColor = true;
+            btnBorrarImagen.Click += btnBorrarImagen_Click;
+            // 
             // FrmNotas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -303,5 +328,7 @@
         private PictureBox pictureBoxFoto;
         private Label label3;
         private Button btnDetenerCámara;
+        private Button btnExaminar;
+        private Button btnBorrarImagen;
     }
 }
