@@ -38,6 +38,10 @@
             btnNuevo = new Button();
             dataGridNotas = new DataGridView();
             tabPageDetalle = new TabPage();
+            btnDetenerCámara = new Button();
+            btnIniciarCámara = new Button();
+            pictureBoxFoto = new PictureBox();
+            label3 = new Label();
             btnCancelar = new Button();
             btnGuardar = new Button();
             txtContenido = new TextBox();
@@ -48,6 +52,7 @@
             tabPageLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridNotas).BeginInit();
             tabPageDetalle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxFoto).BeginInit();
             SuspendLayout();
             // 
             // tabControlNotas
@@ -147,6 +152,10 @@
             // 
             // tabPageDetalle
             // 
+            tabPageDetalle.Controls.Add(btnDetenerCámara);
+            tabPageDetalle.Controls.Add(btnIniciarCámara);
+            tabPageDetalle.Controls.Add(pictureBoxFoto);
+            tabPageDetalle.Controls.Add(label3);
             tabPageDetalle.Controls.Add(btnCancelar);
             tabPageDetalle.Controls.Add(btnGuardar);
             tabPageDetalle.Controls.Add(txtContenido);
@@ -160,6 +169,44 @@
             tabPageDetalle.TabIndex = 1;
             tabPageDetalle.Text = "Detalle";
             tabPageDetalle.UseVisualStyleBackColor = true;
+            // 
+            // btnDetenerCámara
+            // 
+            btnDetenerCámara.Location = new Point(379, 283);
+            btnDetenerCámara.Name = "btnDetenerCámara";
+            btnDetenerCámara.Size = new Size(156, 29);
+            btnDetenerCámara.TabIndex = 9;
+            btnDetenerCámara.Text = "Detener cámara";
+            btnDetenerCámara.UseVisualStyleBackColor = true;
+            btnDetenerCámara.Click += button1_Click;
+            // 
+            // btnIniciarCámara
+            // 
+            btnIniciarCámara.Location = new Point(379, 231);
+            btnIniciarCámara.Name = "btnIniciarCámara";
+            btnIniciarCámara.Size = new Size(156, 29);
+            btnIniciarCámara.TabIndex = 8;
+            btnIniciarCámara.Text = "Iniciar cámara";
+            btnIniciarCámara.UseVisualStyleBackColor = true;
+            btnIniciarCámara.Click += btnIniciarCámara_Click;
+            // 
+            // pictureBoxFoto
+            // 
+            pictureBoxFoto.Location = new Point(119, 220);
+            pictureBoxFoto.Name = "pictureBoxFoto";
+            pictureBoxFoto.Size = new Size(228, 201);
+            pictureBoxFoto.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxFoto.TabIndex = 7;
+            pictureBoxFoto.TabStop = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(44, 231);
+            label3.Name = "label3";
+            label3.Size = new Size(62, 20);
+            label3.TabIndex = 6;
+            label3.Text = "Imagen:";
             // 
             // btnCancelar
             // 
@@ -182,7 +229,7 @@
             // 
             // txtContenido
             // 
-            txtContenido.Location = new Point(156, 172);
+            txtContenido.Location = new Point(119, 109);
             txtContenido.Multiline = true;
             txtContenido.Name = "txtContenido";
             txtContenido.Size = new Size(475, 87);
@@ -190,7 +237,7 @@
             // 
             // txtTitulo
             // 
-            txtTitulo.Location = new Point(156, 97);
+            txtTitulo.Location = new Point(119, 34);
             txtTitulo.Name = "txtTitulo";
             txtTitulo.Size = new Size(475, 27);
             txtTitulo.TabIndex = 2;
@@ -198,7 +245,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(62, 172);
+            label2.Location = new Point(25, 109);
             label2.Name = "label2";
             label2.Size = new Size(81, 20);
             label2.TabIndex = 1;
@@ -207,7 +254,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(93, 96);
+            label1.Location = new Point(56, 33);
             label1.Name = "label1";
             label1.Size = new Size(50, 20);
             label1.TabIndex = 0;
@@ -230,6 +277,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridNotas).EndInit();
             tabPageDetalle.ResumeLayout(false);
             tabPageDetalle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxFoto).EndInit();
             ResumeLayout(false);
         }
 
@@ -251,5 +299,9 @@
         private TextBox txtTitulo;
         private Label label2;
         private Label label1;
+        private Button btnIniciarCámara;
+        private PictureBox pictureBoxFoto;
+        private Label label3;
+        private Button btnDetenerCámara;
     }
 }

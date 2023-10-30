@@ -1,16 +1,21 @@
 using DesktopNotas.Models;
 using DesktopNotas.Repositories;
+using DesktopNotas.Utils;
 
 namespace DesktopNotas
 {
     public partial class FrmNotas : Form
     {
+        //probamos la webcam
+        WebCam webcam;
+
         private NotasRepository repository = new NotasRepository();
         Nota NotaEditada { get; set; }
         public FrmNotas()
         {
             InitializeComponent();
             ObtenerNotas();
+            webcam = new WebCam(this, AutoActivate: false, pictureBoxFoto);
         }
 
         private async void ObtenerNotas()
@@ -72,11 +77,11 @@ namespace DesktopNotas
 
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
-            if(NotaEditada!=null)
+            if (NotaEditada != null)
             {
-                NotaEditada.Titulo=txtTitulo.Text;
-                NotaEditada.Contenido=txtContenido.Text;
-                var modificacionAlmacenada=await repository.UpdateAsync(NotaEditada);
+                NotaEditada.Titulo = txtTitulo.Text;
+                NotaEditada.Contenido = txtContenido.Text;
+                var modificacionAlmacenada = await repository.UpdateAsync(NotaEditada);
                 if (modificacionAlmacenada)
                 {
                     MessageBox.Show($"La nota {NotaEditada.Titulo} fue guardada correctamente", "Editar nota", MessageBoxButtons.OK);
@@ -100,6 +105,16 @@ namespace DesktopNotas
                     tabControlNotas.SelectTab(tabPageLista);
                 }
             }
+        }
+
+        private void btnIniciarCámara_Click(object sender, EventArgs e)
+        {
+            webcam.Initalize();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            webcam.Deinitalize();
         }
     }
 }
