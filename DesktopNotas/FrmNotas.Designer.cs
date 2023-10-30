@@ -40,8 +40,8 @@
             tabPageDetalle = new TabPage();
             btnCancelar = new Button();
             btnGuardar = new Button();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
+            txtContenido = new TextBox();
+            txtTitulo = new TextBox();
             label2 = new Label();
             label1 = new Label();
             tabControlNotas.SuspendLayout();
@@ -136,6 +136,7 @@
             // 
             // dataGridNotas
             // 
+            dataGridNotas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridNotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridNotas.Location = new Point(6, 52);
             dataGridNotas.Name = "dataGridNotas";
@@ -148,8 +149,8 @@
             // 
             tabPageDetalle.Controls.Add(btnCancelar);
             tabPageDetalle.Controls.Add(btnGuardar);
-            tabPageDetalle.Controls.Add(textBox3);
-            tabPageDetalle.Controls.Add(textBox2);
+            tabPageDetalle.Controls.Add(txtContenido);
+            tabPageDetalle.Controls.Add(txtTitulo);
             tabPageDetalle.Controls.Add(label2);
             tabPageDetalle.Controls.Add(label1);
             tabPageDetalle.Location = new Point(4, 29);
@@ -177,21 +178,22 @@
             btnGuardar.TabIndex = 4;
             btnGuardar.Text = "&Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
-            // textBox3
+            // txtContenido
             // 
-            textBox3.Location = new Point(156, 172);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(475, 87);
-            textBox3.TabIndex = 3;
+            txtContenido.Location = new Point(156, 172);
+            txtContenido.Multiline = true;
+            txtContenido.Name = "txtContenido";
+            txtContenido.Size = new Size(475, 87);
+            txtContenido.TabIndex = 3;
             // 
-            // textBox2
+            // txtTitulo
             // 
-            textBox2.Location = new Point(156, 97);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(475, 27);
-            textBox2.TabIndex = 2;
+            txtTitulo.Location = new Point(156, 97);
+            txtTitulo.Name = "txtTitulo";
+            txtTitulo.Size = new Size(475, 27);
+            txtTitulo.TabIndex = 2;
             // 
             // label2
             // 
@@ -245,8 +247,8 @@
         private TextBox textBox1;
         private Button btnCancelar;
         private Button btnGuardar;
-        private TextBox textBox3;
-        private TextBox textBox2;
+        private TextBox txtContenido;
+        private TextBox txtTitulo;
         private Label label2;
         private Label label1;
     }
