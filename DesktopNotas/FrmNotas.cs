@@ -21,6 +21,10 @@ namespace DesktopNotas
         private async void ObtenerNotas()
         {
             dataGridNotas.DataSource = await repository.GetAllAsync();
+            if (dataGridNotas.RowCount > 3)
+            {
+                dataGridNotas.Columns[3].Visible = false;
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -41,6 +45,10 @@ namespace DesktopNotas
             NotaEditada = await repository.GetById(idNotaSeleccionada);
             txtTitulo.Text = NotaEditada.Titulo;
             txtContenido.Text = NotaEditada.Contenido;
+            if (NotaEditada.Imagen != Array.Empty<byte>())
+                pictureBoxFoto.Image = Helper.convertirBytesAImagen(NotaEditada.Imagen);
+            else
+                pictureBoxFoto.Image = null;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -53,6 +61,7 @@ namespace DesktopNotas
             //limpia los controles de la tabpageDetalle 
             txtTitulo.Text = "";
             txtContenido.Text = "";
+            pictureBoxFoto.Image = null;
             //cambia a la tabpageDetalle, 
             tabControlNotas.SelectTab(tabPageDetalle);
         }
@@ -81,6 +90,8 @@ namespace DesktopNotas
             {
                 NotaEditada.Titulo = txtTitulo.Text;
                 NotaEditada.Contenido = txtContenido.Text;
+                if(pictureBoxFoto.Image != null)
+                    NotaEditada.Imagen=Helper.convertirImagenABytes(pictureBoxFoto.Image);
                 var modificacionAlmacenada = await repository.UpdateAsync(NotaEditada);
                 if (modificacionAlmacenada)
                 {
@@ -95,7 +106,8 @@ namespace DesktopNotas
                 var nota = new Nota()
                 {
                     Contenido = txtContenido.Text,
-                    Titulo = txtTitulo.Text
+                    Titulo = txtTitulo.Text,
+                    Imagen=pictureBoxFoto.Image!=null?Helper.convertirImagenABytes(pictureBoxFoto.Image) : null
                 };
                 var nuevaNotaAlmacenada = await repository.AddAsync(nota);
                 if (nuevaNotaAlmacenada)
